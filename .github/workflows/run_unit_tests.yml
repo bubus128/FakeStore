@@ -26,4 +26,4 @@ jobs:
       run: dotnet restore src/FakeStore.sln.sln
 
     - name: Run tests
-      run: dotnet test src/Tests/FakeStore.UnitTests/FakeStore.UnitTests.csproj --verbosity normal
+      run: dotnet test src/FakeStore.UnitTests/FakeStore.UnitTests.csproj --verbosity normal
