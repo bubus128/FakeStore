@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  fakestore-app:
+    build:
+      context: ./src
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:80" # Mapowanie portu hosta na port kontenera
+      - "7179:7179"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development" # Ustawienie środowiska
+    restart: always

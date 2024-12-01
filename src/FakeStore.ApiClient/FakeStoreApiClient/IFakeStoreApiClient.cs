@@ -1,9 +1,10 @@
-﻿using FakeStore.Data.Models;
+﻿using FakeStore.ApiClient.Models;
 
-namespace FakeStore.ApiCLient.FakeStoreApiClient
+namespace FakeStore.ApiCLient.FakeStoreApiClient;
+
+public interface IFakeStoreApiClient
 {
-    public interface IFakeStoreApiClient
-    {
-        Task<List<Product>> GetProductsAsync();
-    }
+	public Task<List<string>> GetCategoriesAsync();
+	public Task<List<Product>> GetProductsByCategoryAsync(string category);
+
 }
