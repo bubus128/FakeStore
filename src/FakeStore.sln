@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeStore.Business.UnitTest
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{0ABF6F76-7D16-4EEB-A873-F702820ED184}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeStore.ApiClient.UnitTests", "Tests\FakeStore.ApiClient.UnitTests\FakeStore.ApiClient.UnitTests.csproj", "{1E2897FD-24FC-4E24-B190-CC0BCABCC10F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FakeStore.Presentation.UnitTests", "Tests\FakeStore.Presentation.UnitTests\FakeStore.Presentation.UnitTests.csproj", "{C2382211-96B1-4D27-9A9F-EF807AA88785}"
 EndProject
 Global
@@ -39,10 +37,6 @@ Global
 		{E3F3C27C-2F7D-4A1E-B2E5-480298ADBAC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3F3C27C-2F7D-4A1E-B2E5-480298ADBAC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E3F3C27C-2F7D-4A1E-B2E5-480298ADBAC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E2897FD-24FC-4E24-B190-CC0BCABCC10F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E2897FD-24FC-4E24-B190-CC0BCABCC10F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E2897FD-24FC-4E24-B190-CC0BCABCC10F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E2897FD-24FC-4E24-B190-CC0BCABCC10F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C2382211-96B1-4D27-9A9F-EF807AA88785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2382211-96B1-4D27-9A9F-EF807AA88785}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2382211-96B1-4D27-9A9F-EF807AA88785}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,7 +47,6 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E3F3C27C-2F7D-4A1E-B2E5-480298ADBAC0} = {0ABF6F76-7D16-4EEB-A873-F702820ED184}
-		{1E2897FD-24FC-4E24-B190-CC0BCABCC10F} = {0ABF6F76-7D16-4EEB-A873-F702820ED184}
 		{C2382211-96B1-4D27-9A9F-EF807AA88785} = {0ABF6F76-7D16-4EEB-A873-F702820ED184}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

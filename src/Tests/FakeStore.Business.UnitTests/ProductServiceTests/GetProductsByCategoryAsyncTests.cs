@@ -1,5 +1,6 @@
 ﻿using FakeStore.ApiClient.Models;
 using FakeStore.ApiCLient.FakeStoreApiClient;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace FakeStore.Business.UnitTests.ProductServiceTests;
@@ -10,15 +11,18 @@ public class GetProductsByCategoryAsyncTests
 	private Mock<IFakeStoreApiClient> _mockApiClient;
 	private ProductService.ProductService _productService;
 	private List<Product> products;
+	private Mock<ILogger<ProductService.ProductService>> _mockLogger;
+
 
 	[SetUp]
 	public void SetUp()
 	{
-		_mockApiClient = new Mock<IFakeStoreApiClient>();
-		_productService = new ProductService.ProductService(_mockApiClient.Object);
+		_mockApiClient = new();
+		_mockLogger = new();
+		_productService = new ProductService.ProductService(_mockApiClient.Object, _mockLogger.Object);
 		products =
 		[
-			new Product
+			new()
 			{
 				Id = 1,
 				Title = "Product 1",
@@ -26,7 +30,7 @@ public class GetProductsByCategoryAsyncTests
 				Category = null,
 				Image = null
 			},
-			new Product
+			new()
 			{
 				Id = 2,
 				Title = "Product 2",
@@ -34,7 +38,7 @@ public class GetProductsByCategoryAsyncTests
 				Category = null,
 				Image = null
 			},
-			new Product
+			new()
 			{
 				Id = 3,
 				Title = "Product 3",

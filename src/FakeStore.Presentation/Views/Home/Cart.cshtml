@@ -1,0 +1,42 @@
+﻿@model FakeStore.Presentation.Models.CartViewModel[]
+
+<h1>Koszyk</h1>
+
+@if (!Model.Any())
+{
+	<p>Koszyk jest pusty.</p>
+}
+
+else
+{
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Product</th>
+			<th>Quentity</th>
+			<th>Unit price</th>
+			<th>Total price</th>
+			<th>Action</th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.product.Title</td>
+				<td>@item.Quantity</td>
+				<td>@item.product.Price</td>
+				<td>@(item.Quantity * item.product.Price)</td>
+				<td>
+					<form method="post" asp-action="RemoveFromCart">
+							<input type="hidden" name="productId" value="@item.product.Id" />
+						<button type="submit" class="btn btn-danger">Delete</button>
+					</form>
+				</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+
+	<p><strong>Łączna wartość:</strong> $@(Model.Sum(item => item.Quantity * item.product.Price))</p>
+}
