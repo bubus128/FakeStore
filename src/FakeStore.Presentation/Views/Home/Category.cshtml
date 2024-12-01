@@ -1,0 +1,61 @@
+﻿@model List<FakeStore.ApiClient.Models.Product>
+
+<h1>Products in @ViewBag.CategoryName</h1>
+
+<form method="get" asp-controller="Home" asp-action="Category">
+	<input type="hidden" name="name" value="@ViewBag.CategoryName" />
+	<input type="hidden" name="page" value="@ViewBag.CurrentPage" />
+	<label for="pageSize">Products per page:</label>
+	<select id="pageSize" name="pageSize" onchange="this.form.submit()">
+		@foreach (var size in new[] { 5, 10, 20 })
+		{
+			<!option value="@size" @(size == ViewBag.PageSize ? "selected" : "")>@size</!option>
+		}
+	</select>
+</form>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+                <img src="@product.Image" class="card-img-top" alt="@product.Title">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Title</h5>
+                    <p class="card-text">@product.Description</p>
+                    <p class="card-text text-muted">$@product.Price</p>
+                </div>
+            </div>
+        </div>
+    }
+}
+</div>
+
+<nav aria-label="Product pagination">
+    <ul class="pagination justify-content-center">
+        @if (ViewBag.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Category", new { name = ViewBag.CategoryName, page = ViewBag.CurrentPage - 1, pageSize = ViewBag.PageSize })" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+        }
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <li class="page-item @(i == ViewBag.CurrentPage ? "active" : "")">
+                <a class="page-link" href="@Url.Action("Category", new { name = ViewBag.CategoryName, page = i, pageSize = ViewBag.PageSize })">@i</a>
+            </li>
+        }
+
+        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" href="@Url.Action("Category", new { name = ViewBag.CategoryName, page = ViewBag.CurrentPage + 1, pageSize = ViewBag.PageSize })" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        }
+    </ul>
+</nav>
