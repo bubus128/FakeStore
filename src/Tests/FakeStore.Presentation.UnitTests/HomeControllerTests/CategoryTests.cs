@@ -1,7 +1,9 @@
 ﻿using FakeStore.ApiClient.Models;
+using FakeStore.Business.CartService;
 using FakeStore.Business.ProductService;
 using FakeStore.Presentation.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace FakeStore.Presentation.UnitTests.HomeControllerTests;
@@ -10,17 +12,21 @@ namespace FakeStore.Presentation.UnitTests.HomeControllerTests;
 public class CategoryTests
 {
 	private Mock<IProductService> _mockProductService;
+	private Mock<ICartService> _mockCartService;
+	private Mock<ILogger<HomeController>> _mockLogger;
 	private HomeController _controller;
 	private List<Product> products;
 
 	[SetUp]
 	public void SetUp()
 	{
-		_mockProductService = new Mock<IProductService>();
-		_controller = new HomeController(_mockProductService.Object);
-		products = new List<Product>
+		_mockProductService = new();
+		_mockCartService = new();
+		_mockLogger = new();
+		_controller = new(_mockProductService.Object, _mockCartService.Object, _mockLogger.Object);
+		products = new()
 		{
-			new Product
+			new()
 			{
 				Id = 1,
 				Title = "Product 1",
@@ -28,7 +34,7 @@ public class CategoryTests
 				Category = null,
 				Image = null
 			},
-			new Product
+			new()
 			{
 				Id = 2,
 				Title = "Product 2",

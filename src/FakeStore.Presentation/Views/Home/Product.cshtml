@@ -1,0 +1,11 @@
+﻿@model FakeStore.ApiClient.Models.Product
+
+<div class="product-details">
+	<h1>@Model.Title</h1>
+	<p>@Model.Description</p>
+	<p><strong>Price:</strong> $@Model.Price</p>
+	<form method="post" asp-action="AddToCart">
+		<input type="hidden" name="productId" value="@Model.Id" />
+		<button type="submit" class="btn btn-primary">Add to cart</button>
+	</form>
+</div>

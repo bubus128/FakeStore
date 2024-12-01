@@ -9,7 +9,6 @@ COPY FakeStore.Business/FakeStore.Business.csproj ./FakeStore.Business/
 COPY FakeStore.ApiClient/FakeStore.ApiClient.csproj ./FakeStore.ApiClient/
 COPY Tests/FakeStore.Presentation.UnitTests/FakeStore.Presentation.UnitTests.csproj ./Tests/FakeStore.Presentation.UnitTests/
 COPY Tests/FakeStore.Business.UnitTests/FakeStore.Business.UnitTests.csproj ./Tests/FakeStore.Business.UnitTests/
-COPY Tests/FakeStore.ApiClient.UnitTests/FakeStore.ApiClient.UnitTests.csproj ./Tests/FakeStore.ApiClient.UnitTests/
 RUN dotnet restore
 
 # Kopiowanie reszty kodu i budowanie aplikacji
@@ -21,8 +20,8 @@ FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 COPY --from=build /app/publish .
 
-# Otwórz port 80 dla ruchu HTTP
-EXPOSE 80
+# Otwórz port 8080 dla ruchu HTTP
+EXPOSE 8080
 
 # Uruchom aplikację
-ENTRYPOINT ["dotnet", "Presentation.dll"]
+ENTRYPOINT ["dotnet", "FakeStore.Presentation.dll"]
