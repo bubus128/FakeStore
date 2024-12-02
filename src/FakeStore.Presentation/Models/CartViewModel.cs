@@ -4,6 +4,6 @@ namespace FakeStore.Presentation.Models;
 
 public class CartViewModel
 {
-	public required Product product { get; set; }
-	public int Quantity { get; set; }
+    public required Product product { get; set; }
+    public int Quantity { get; set; }
 }
